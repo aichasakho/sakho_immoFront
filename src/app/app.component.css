@@ -1,0 +1,37 @@
+/* Styles de la Navbar */
+.navbar {
+  background-color: #333;
+  padding: 10px 20px;
+}
+
+.navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-around; /* Espacement égal entre les éléments */
+}
+
+.navbar li {
+  display: inline;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 15px;
+  transition: background-color 0.3s;
+}
+
+.navbar a:hover {
+  background-color: #555; /* Couleur de fond au survol */
+  border-radius: 5px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .navbar ul {
+    flex-direction: column; /* Empile les éléments sur petits écrans */
+    align-items: center; /* Centre les éléments */
+  }
+}

@@ -1,0 +1,21 @@
+<div *ngFor="let bien of biens">
+  <h2>{{ bien.titre }}</h2>
+  <p *ngIf="bien.imagePath">Image: <img [src]="'http://localhost:8000/storage/' + bien.imagePath" alt="{{ bien.titre }}" width="100"></p>
+  <p>{{ bien.description }}</p>
+  <p>Prix: {{ bien.prix }} Fcfa</p>
+  <p>Disponible: {{ bien.disponible ? 'Oui' : 'Non' }}</p>
+  <p>Type: {{ bien.type }}</p>
+  <hr>
+</div>
+
+
+<!--
+<label for="type">Type de Bien</label>
+<select id="type" [(ngModel)]="bien.type" name="type" required>
+  <option value="appartement">Appartement</option>
+  <option value="studio">Studio</option>
+  <option value="magasin">Magasin</option>
+  <option value="terrain">Terrain</option>
+  <option value="maison">Maison</option>
+</select>
+-->

@@ -1,0 +1,49 @@
+<h2>Gestion des Biens</h2>
+
+<form (ngSubmit)="onSubmit()" #bienForm="ngForm" enctype="multipart/form-data">
+  <div>
+    <label>Titre:</label>
+    <input type="text" [(ngModel)]="bien.titre" name="titre" required>
+  </div>
+  <div>
+    <label>Description:</label>
+    <textarea [(ngModel)]="bien.description" name="description" required></textarea>
+  </div>
+  <div>
+    <label>Prix:</label>
+    <input type="number" [(ngModel)]="bien.prix" name="prix" required>
+  </div>
+  <div>
+    <label>Disponible:</label>
+    <input type="checkbox" [(ngModel)]="bien.disponible" name="disponible">
+  </div>
+  <div>
+    <label>Type:</label>
+    <select [(ngModel)]="bien.type" name="type" required>
+      <option value="appartement">Appartement</option>
+      <option value="studio">Studio</option>
+      <option value="magasin">Magasin</option>
+      <option value="terrain">Terrain</option>
+      <option value="maison">Maison</option>
+    </select>
+  </div>
+  <div>
+    <label>Image:</label>
+    <input type="file" (change)="onFileChange($event)" accept="image/*">
+  </div>
+  <button type="submit">Enregistrer</button>
+</form>
+
+<h3>Liste des Biens</h3>
+<ul>
+  <li *ngFor="let b of biens">
+    <img *ngIf="b.imagePath" [src]="b.imagePath" alt="{{ b.titre }}" width="100" />
+    <div class="bien-info">
+      <span>{{ b.titre }}</span>
+      <div class="actions">
+        <button (click)="editBien(b)">Modifier</button>
+        <button (click)="deleteBien(b.id)">Supprimer</button>
+      </div>
+    </div>
+  </li>
+</ul>
