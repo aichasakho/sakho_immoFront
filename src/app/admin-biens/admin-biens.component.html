@@ -29,7 +29,7 @@
   </div>
   <div>
     <label>Image:</label>
-    <input type="file" (change)="onFileChange($event)" accept="image/*">
+    <input type="file" (change)="onFileChange($event)" accept="image/*" name="imagePath">
   </div>
   <button type="submit">Enregistrer</button>
 </form>
@@ -37,8 +37,7 @@
 <h3>Liste des Biens</h3>
 <ul>
   <li *ngFor="let b of biens">
-<<<<<<< HEAD
-    <img *ngIf="b.imagePath" [src]="b.imagePath" alt="{{ b.titre }}" width="100" />
+    <img *ngIf="b.imagePath" [src]="'http://localhost:8000/storage/' + b.imagePath" alt="{{b.titre}}" width="100" />
     <div class="bien-info">
       <span>{{ b.titre }}</span>
       <div class="actions">
@@ -46,11 +45,5 @@
         <button (click)="deleteBien(b.id)">Supprimer</button>
       </div>
     </div>
-=======
-    {{ b.titre }} -
-    <button (click)="editBien(b)">Modifier</button>
-    <button (click)="deleteBien(b.id)">Supprimer</button>
-    <img *ngIf="b.imagePath" [src]="'http://localhost:8000/storage/' + b.imagePath" alt="{{ b.titre }}" width="100">
->>>>>>> fdc090cdd4d967238a584dc7e285feaf1026907d
   </li>
 </ul>

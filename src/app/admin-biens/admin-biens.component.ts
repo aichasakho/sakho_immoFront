@@ -30,16 +30,22 @@ export class AdminBiensComponent implements OnInit {
   onFileChange(event: any) {
     const file = event.target.files[0];
     if (file) {
-      this.selectedFile = file; // Mettez à jour le fichier sélectionné
+      this.selectedFile = file; // Stocker le fichier sélectionné
       const reader = new FileReader();
       reader.onload = (e: any) => {
-        this.bien.imagePath = e.target.result; // stocke le chemin de l'image pour l'aperçu
+        // Optionnel : stocker le chemin de l'image pour l'aperçu
+        this.bien.imagePath = e.target.result;
       };
       reader.readAsDataURL(file);
     }
   }
 
   onSubmit(): void {
+    if (!this.bien.titre || !this.bien.description || !this.bien.prix || !this.bien.type) {
+      alert('Veuillez remplir tous les champs requis.');
+      return;
+    }
+
     const formData = new FormData();
     formData.append('titre', this.bien.titre);
     formData.append('description', this.bien.description);
@@ -50,6 +56,15 @@ export class AdminBiensComponent implements OnInit {
     if (this.selectedFile) {
       formData.append('imagePath', this.selectedFile, this.selectedFile.name);
     }
+
+    console.log('FormData:', {
+      titre: this.bien.titre,
+      description: this.bien.description,
+      prix: this.bien.prix,
+      disponible: this.bien.disponible,
+      type: this.bien.type,
+      imagePath: this.selectedFile ? this.selectedFile.name : 'Aucune image',
+    });
 
     const request = this.bien.id
       ? this.biensService.updateBien(this.bien.id, formData) // Assurez-vous que l'ID est inclus
@@ -62,6 +77,15 @@ export class AdminBiensComponent implements OnInit {
       },
       (error) => {
         console.error('Erreur lors de la soumission du bien', error);
+        if (error.error && error.error.errors) {
+          let errorMessage = 'Erreur lors de la soumission du bien : ';
+          for (const key in error.error.errors) {
+            errorMessage += `${key}: ${error.error.errors[key].join(', ')}; `;
+          }
+          alert(errorMessage);
+        } else {
+          alert('Une erreur inconnue est survenue.');
+        }
       }
     );
   }
@@ -69,7 +93,10 @@ export class AdminBiensComponent implements OnInit {
   editBien(bien: Bien): void {
     this.bien = { ...bien }; // Clone l'objet bien pour le modifier
     this.selectedFile = null; // Réinitialiser le fichier sélectionné
-    // Si vous voulez afficher l'image existante, vous pouvez la charger ici
+    // Conserver l'ancienne image
+    if (bien.imagePath) {
+      this.bien.imagePath = bien.imagePath; // Assurez-vous que cela correspond à votre modèle
+    }
   }
 
   deleteBien(id?: number): void {
@@ -92,7 +119,7 @@ export class AdminBiensComponent implements OnInit {
     }
   }
   resetForm(): void {
-    this.bien = { titre: '', description: '', prix: 0, disponible: true, type: 'appartement' };
+    this.bien = { titre: '', description: '', prix: 0, disponible: true, type: 'appartement', imagePath: '' }; // Ajoutez imagePath
     this.selectedFile = null; // Réinitialiser le fichier sélectionné
   }
 }
