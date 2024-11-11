@@ -24,7 +24,11 @@ export class BiensService {
     return this.http.put<Bien>(`${this.apiUrl}/${id}`, bien);
   }
 
-  deleteBien(id: number): Observable<any> {
+  /*deleteBien(id: number): Observable<any> {
     return this.http.delete(`http://localhost:8000/api/biens/${id}`);
+  }*/
+
+  deleteBien(id: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/${id}`);
   }
 }
