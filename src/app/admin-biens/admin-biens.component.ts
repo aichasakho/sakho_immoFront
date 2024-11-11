@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BiensService } from '../services/bien.service';
+import { FormsModule } from '@angular/forms';
 import { Bien } from '../models/bien.model';
 
 @Component({
@@ -122,4 +123,8 @@ export class AdminBiensComponent implements OnInit {
     this.bien = { titre: '', description: '', prix: 0, disponible: true, type: 'appartement', imagePath: '' }; // Ajoutez imagePath
     this.selectedFile = null; // Réinitialiser le fichier sélectionné
   }
+
+
+
+
 }

@@ -26,4 +26,33 @@ export class BienComponent implements OnInit {
 
       });
   }
+  appelBien(bien: Bien): void {
+    this.biensService.appelBien(bien).subscribe(
+      (response) => {
+        console.log(response.message);
+        // Afficher un message de succès à l'utilisateur
+      },
+      (error) => {
+        console.error('Erreur lors de la demande d\'appel', error);
+        // Afficher un message d'erreur à l'utilisateur
+      }
+    );
+  }
+
+  contacterBien(bien: Bien): void {
+    this.biensService.contacterBien(bien).subscribe(
+      (response) => {
+        console.log(response.message);
+        // Afficher un message de succès à l'utilisateur
+      },
+      (error) => {
+        console.error('Erreur lors de la demande de contact', error);
+        // Afficher un message d'erreur à l'utilisateur
+      }
+    );
+  }
+
+
+
+
 }

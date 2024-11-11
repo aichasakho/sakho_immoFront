@@ -31,4 +31,13 @@ export class BiensService {
   deleteBien(id: number): Observable<any> {
     return this.http.delete(`${this.apiUrl}/${id}`);
   }
+
+
+  appelBien(bien: Bien): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/${bien.id}/appeler`, {});
+  }
+
+  contacterBien(bien: Bien): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/${bien.id}/contacter`, {});
+  }
 }
