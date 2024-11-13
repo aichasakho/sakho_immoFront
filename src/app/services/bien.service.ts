@@ -25,7 +25,7 @@ export class BiensService {
   }
 
   updateBien(id: number, formData: FormData): Observable<any> {
-    return this.http.put(`${this.apiUrl}/${id}`, formData);
+    return this.http.put<any>(`${this.apiUrl}/${id}`, formData);
   }
 
   deleteBien(id: number): Observable<any> {

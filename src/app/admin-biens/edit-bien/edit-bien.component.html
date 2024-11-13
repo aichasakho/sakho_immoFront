@@ -1,19 +1,19 @@
 <form [formGroup]="bienForm" (ngSubmit)="onSubmit()">
   <div>
     <label for="titre">Titre:</label>
-    <input id="titre" formControlName="titre" [(ngModel)]="bien.titre">
+    <input id="titre" formControlName="titre">
   </div>
   <div>
     <label for="description">Description:</label>
-    <input id="description" formControlName="description" [(ngModel)]="bien.description">
+    <input id="description" formControlName="description">
   </div>
   <div>
     <label for="prix">Prix:</label>
-    <input id="prix" formControlName="prix" type="number" [(ngModel)]="bien.prix">
+    <input id="prix" formControlName="prix" type="number">
   </div>
   <div>
     <label for="type">Type:</label>
-    <input id="type" formControlName="type" [(ngModel)]="bien.type">
+    <input id="type" formControlName="type">
   </div>
   <div>
     <label for="imagePath">Image:</label>
