@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BiensService } from '../services/bien.service';
 import { FormsModule } from '@angular/forms';
 import { Bien } from '../models/bien.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-biens',
@@ -10,10 +11,10 @@ import { Bien } from '../models/bien.model';
 })
 export class AdminBiensComponent implements OnInit {
   biens: Bien[] = [];
-  bien: Bien = { titre: '', description: '', prix: 0, disponible: true, type: 'appartement' };
+  bien: Bien = {id:0 , titre: '', description: '', prix: 0, disponible: true, type: 'appartement' };
   selectedFile: File | null = null;
 
-  constructor(private biensService: BiensService) {}
+  constructor(private biensService: BiensService, private router: Router) {}
 
   ngOnInit(): void {
     this.loadBiens();
@@ -31,10 +32,9 @@ export class AdminBiensComponent implements OnInit {
   onFileChange(event: any) {
     const file = event.target.files[0];
     if (file) {
-      this.selectedFile = file; // Stocker le fichier sélectionné
+      this.selectedFile = file;
       const reader = new FileReader();
       reader.onload = (e: any) => {
-        // Optionnel : stocker le chemin de l'image pour l'aperçu
         this.bien.imagePath = e.target.result;
       };
       reader.readAsDataURL(file);
@@ -68,7 +68,7 @@ export class AdminBiensComponent implements OnInit {
     });
 
     const request = this.bien.id
-      ? this.biensService.updateBien(this.bien.id, formData) // Assurez-vous que l'ID est inclus
+      ? this.biensService.updateBien(this.bien.id, formData)
       : this.biensService.createBien(formData);
 
     request.subscribe(
@@ -92,24 +92,16 @@ export class AdminBiensComponent implements OnInit {
   }
 
   editBien(bien: Bien): void {
-    this.bien = { ...bien }; // Clone l'objet bien pour le modifier
-    this.selectedFile = null; // Réinitialiser le fichier sélectionné
-    // Conserver l'ancienne image
-    if (bien.imagePath) {
-      this.bien.imagePath = bien.imagePath; // Assurez-vous que cela correspond à votre modèle
-    }
+    this.router.navigate(['/edit-bien', bien.id]);
   }
 
   deleteBien(id?: number): void {
-    // Vérifiez si l'identifiant est défini
     if (id !== undefined) {
       this.biensService.deleteBien(id).subscribe(
         () => {
-          // Rechargez la liste des biens après la suppression
           this.loadBiens();
         },
         (error) => {
-          // Gérer l'erreur et afficher un message informatif
           console.error('Erreur lors de la suppression du bien', error);
           alert('Une erreur est survenue lors de la suppression du bien. Veuillez réessayer.');
         }
@@ -120,11 +112,9 @@ export class AdminBiensComponent implements OnInit {
     }
   }
   resetForm(): void {
-    this.bien = { titre: '', description: '', prix: 0, disponible: true, type: 'appartement', imagePath: '' }; // Ajoutez imagePath
-    this.selectedFile = null; // Réinitialiser le fichier sélectionné
+    this.bien = {id:0, titre: '', description: '', prix: 0, disponible: true, type: 'appartement', imagePath: '' };
+    this.selectedFile = null;
   }
-
-
 
 
 }

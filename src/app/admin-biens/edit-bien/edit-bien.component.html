@@ -1,0 +1,23 @@
+<form [formGroup]="bienForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="titre">Titre:</label>
+    <input id="titre" formControlName="titre" [(ngModel)]="bien.titre">
+  </div>
+  <div>
+    <label for="description">Description:</label>
+    <input id="description" formControlName="description" [(ngModel)]="bien.description">
+  </div>
+  <div>
+    <label for="prix">Prix:</label>
+    <input id="prix" formControlName="prix" type="number" [(ngModel)]="bien.prix">
+  </div>
+  <div>
+    <label for="type">Type:</label>
+    <input id="type" formControlName="type" [(ngModel)]="bien.type">
+  </div>
+  <div>
+    <label for="imagePath">Image:</label>
+    <input id="imagePath" type="file" (change)="onFileSelected($event)">
+  </div>
+  <button type="submit" [disabled]="!bienForm.valid">Mettre à jour</button>
+</form>

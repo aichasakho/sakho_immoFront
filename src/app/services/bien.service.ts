@@ -1,4 +1,4 @@
-// biens.service.ts
+// src/app/services/biens.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -16,22 +16,21 @@ export class BiensService {
     return this.http.get<Bien[]>(this.apiUrl);
   }
 
+  getBien(id: number): Observable<Bien> {
+    return this.http.get<Bien>(`${this.apiUrl}/${id}`);
+  }
+
   createBien(bien: FormData): Observable<Bien> {
     return this.http.post<Bien>(this.apiUrl, bien);
   }
 
-  updateBien(id: number, bien: FormData): Observable<Bien> {
-    return this.http.put<Bien>(`${this.apiUrl}/${id}`, bien);
+  updateBien(id: number, formData: FormData): Observable<any> {
+    return this.http.put(`${this.apiUrl}/${id}`, formData);
   }
-
-  /*deleteBien(id: number): Observable<any> {
-    return this.http.delete(`http://localhost:8000/api/biens/${id}`);
-  }*/
 
   deleteBien(id: number): Observable<any> {
     return this.http.delete(`${this.apiUrl}/${id}`);
   }
-
 
   appelBien(bien: Bien): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/${bien.id}/appeler`, {});
