@@ -8,7 +8,6 @@ const routes: Routes = [
   { path: 'biens', component: BienComponent },
   { path: 'admin/biens', component: AdminBiensComponent },
   { path: 'edit-bien/:id', component: EditBienComponent }
-  // { path: 'biens', component: BienListComponent },
 ];
 @NgModule({
   declarations: [],
