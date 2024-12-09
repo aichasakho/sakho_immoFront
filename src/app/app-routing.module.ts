@@ -29,6 +29,7 @@ const routes: Routes = [
   { path: '**', redirectTo: '/annonces' }
 
   // { path: 'biens', component: BienListComponent },
+
 ];
 @NgModule({
   declarations: [],

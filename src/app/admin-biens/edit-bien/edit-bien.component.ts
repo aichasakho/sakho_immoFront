@@ -54,16 +54,9 @@ export class EditBienComponent implements OnInit {
   onSubmit(): void {
     if (this.bienForm.valid) {
       const formData = new FormData();
-      formData.append('titre', this.bienForm.get('titre')?.value);
-      formData.append('description', this.bienForm.get('description')?.value);
-      formData.append('prix', this.bienForm.get('prix')?.value);
-      formData.append('type', this.bienForm.get('type')?.value);
-
       if (this.selectedFile) {
         formData.append('imagePath', this.selectedFile, this.selectedFile.name);
       }
-
-      console.log('FormData:', formData);
 
       this.bienService.updateBien(this.bienId, formData).subscribe(
         (response) => {
@@ -71,14 +64,22 @@ export class EditBienComponent implements OnInit {
           this.router.navigate(['/biens']);
         },
         (error) => {
-          console.error("Erreur lors de la mise à jour", error);
-          alert('Erreur lors de la mise à jour. Vérifiez les champs.');
+          if (error.error && error.error.errors) {
+            let errorMessage = 'Erreur lors de la mise à jour: ';
+            for (const key in error.error.errors) {
+              errorMessage += `${key}: ${error.error.errors[key].join(', ')}; `;
+            }
+            alert(errorMessage);
+          } else {
+            alert('Une erreur inconnue est survenue.');
+          }
         }
       );
     } else {
       console.error("Erreur lors de la soumission. Vérifiez les champs.");
     }
   }
+
 
   onFileSelected(event: Event): void {
     const file = (event.target as HTMLInputElement).files?.[0];
