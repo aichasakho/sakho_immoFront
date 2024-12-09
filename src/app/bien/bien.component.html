@@ -1,23 +1,46 @@
-<div class="container my-5">
-  <h2 class="mb-4">Afficher les Biens</h2>
-  <div class="row">
-    <div class="col-sm-6 col-md-4 mb-4" *ngFor="let bien of biens">
-      <div class="card h-100 p-3">
-        <img class="card-img-top" [src]="'http://localhost:8000/storage/' + bien.imagePath" alt="{{ bien.titre }}" *ngIf="bien.imagePath">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">{{ bien.titre }}</h5>
-          <p class="card-text">{{ bien.description }}</p>
-          <div class="d-flex justify-content-between align-items-center mt-auto">
-            <p class="card-text font-weight-bold">{{ bien.prix }} Fcfa</p>
-            <p class="card-text">Disponible: {{ bien.disponible ? 'Oui' : 'Non' }}</p>
-          </div>
-          <p class="card-text">Type: {{ bien.type }}</p>
-          <div class="d-flex justify-content-end" *ngIf="bien.disponible">
-            <button class="btn btn-primary mr-2" (click)="appelBien(bien)">Appeler</button>
-            <button class="btn btn-secondary" (click)="contacterBien(bien)">Contacter</button>
+<div class="home-banner">
+  <img class="banner-image" src="assets/images/banner.jpg" alt="" />
+</div>
+
+<div class="annonces-section">
+  <h1>Annonces</h1>
+  <hr class="mx-auto mb-5 p-0" style="width:15%"/>
+  <hr class="mx-auto mb-5 p-0" style="width:10%"/>
+  <div class="annonces-grid">
+
+    <div class="annonce-item" *ngFor="let bien of biens">
+      <img class="card-img-top" [src]="'http://localhost:8000/storage/' + bien.imagePath" alt="{{ bien.titre }}" *ngIf="bien.imagePath">
+      <span class="badge {{ bien.type_annonce == 'location' ? ' bg-primary' : ' bg-success'}}">{{ bien.type_annonce }}</span>
+      <div class="annonce-info">
+        <div class="properties">
+          <div class="text p-3">
+            <div class="d-flex">
+              <div class="one">
+                <p>{{ bien.description }}</p>
+              </div>
+              <div class="two">
+                <span class="text-dark font-weight-bold" style="font-size: 18px;">{{ bien.prix }}  Fcfa</span>
+              </div>
+              <p class="card-text">Disponible: {{ bien.disponible ? 'Oui' : 'Non' }}</p>
+            </div>
+            <div style="display: flex; align-items: center; text-align: center;">
+              <span style="margin-right: 10px;"><i class="flaticon-area">Superficie: </i> 250 m²</span>
+              <span style="margin-right: 10px;"><i class="flaticon-bathtub">🛁</i> 3</span>
+              <span><i class="flaticon-bed">🛏️</i> 4</span>
+            </div>
           </div>
         </div>
+
+        <button class="btn btn-outline-primary" [routerLink]="['/detail', bien.id]">Voir plus</button>
       </div>
+
     </div>
   </div>
 </div>
+
+
+
+
+
+
+

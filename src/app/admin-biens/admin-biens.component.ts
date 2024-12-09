@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class AdminBiensComponent implements OnInit {
   biens: Bien[] = [];
-  bien: Bien = {id:0 , titre: '', description: '', prix: 0, disponible: true, type: 'appartement' };
+  bien: Bien = {id:0 , titre: '', description: '', prix: 0, disponible: true, type: '', type_annonce: '' };
   selectedFile: File | null = null;
 
   constructor(private biensService: BiensService, private router: Router) {}
@@ -42,7 +42,7 @@ export class AdminBiensComponent implements OnInit {
   }
 
   onSubmit(): void {
-    if (!this.bien.titre || !this.bien.description || !this.bien.prix || !this.bien.type) {
+    if (!this.bien.titre || !this.bien.description || !this.bien.prix || !this.bien.type || !this.bien.type_annonce ) {
       alert('Veuillez remplir tous les champs requis.');
       return;
     }
@@ -53,6 +53,8 @@ export class AdminBiensComponent implements OnInit {
     formData.append('prix', this.bien.prix.toString());
     formData.append('disponible', this.bien.disponible ? '1' : '0');
     formData.append('type', this.bien.type);
+    formData.append('type_annonce', this.bien.type_annonce);
+
 
     if (this.selectedFile) {
       formData.append('imagePath', this.selectedFile, this.selectedFile.name);
@@ -64,6 +66,8 @@ export class AdminBiensComponent implements OnInit {
       prix: this.bien.prix,
       disponible: this.bien.disponible,
       type: this.bien.type,
+      type_annonce: this.bien.type_annonce,
+
       imagePath: this.selectedFile ? this.selectedFile.name : 'Aucune image',
     });
 
@@ -112,7 +116,7 @@ export class AdminBiensComponent implements OnInit {
     }
   }
   resetForm(): void {
-    this.bien = {id:0, titre: '', description: '', prix: 0, disponible: true, type: 'appartement', imagePath: '' };
+    this.bien = {id:0, titre: '', description: '', prix: 0, disponible: true, type: '', imagePath: '', type_annonce: '' };
     this.selectedFile = null;
   }
 

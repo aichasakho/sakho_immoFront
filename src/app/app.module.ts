@@ -10,6 +10,13 @@ import { AdminBiensComponent } from './admin-biens/admin-biens.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ContactComponent } from './contact/contact.component';
 import { EditBienComponent } from './admin-biens/edit-bien/edit-bien.component';
+import { NavComponent } from './nav/nav.component';
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
+import { DetailComponent } from './detail/detail.component';
+import { LocationComponent } from './location/location.component';
+import { VenteComponent } from './vente/vente.component';
+import { AccueilComponent } from './accueil/accueil.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +26,13 @@ import { EditBienComponent } from './admin-biens/edit-bien/edit-bien.component';
     AdminBiensComponent,
     ContactComponent,
     EditBienComponent,
+    NavComponent,
+    RegisterComponent,
+    LoginComponent,
+    DetailComponent,
+    LocationComponent,
+    VenteComponent,
+    AccueilComponent,
   ],
   imports: [
     BrowserModule,

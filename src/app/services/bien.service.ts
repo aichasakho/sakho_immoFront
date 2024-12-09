@@ -39,4 +39,7 @@ export class BiensService {
   contacterBien(bien: Bien): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/${bien.id}/contacter`, {});
   }
+  getBienById(id: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/${id}`);
+  }
 }

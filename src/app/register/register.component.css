@@ -1,0 +1,91 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif; /* Police de caractère par défaut */
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh; /* Hauteur minimale pour remplir l'écran */
+  background: linear-gradient(to bottom right, #003366, #ffffff); /* Dégradé de bleu foncé à blanc */
+  padding: 20px; /* Espacement autour de la section */
+}
+
+h1 {
+  color: #ffffff; /* Couleur blanche pour le titre */
+  margin-bottom: 30px; /* Espacement en bas */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Ombre pour le texte */
+}
+
+.card {
+  background-color: rgba(255, 255, 255, 0.9); /* Fond blanc avec opacité */
+  border-radius: 10px; /* Coins arrondis */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Ombre légère */
+  padding: 20px; /* Padding interne */
+  max-width: 400px; /* Largeur maximale pour le formulaire */
+  width: 90%; /* Pour les petits écrans */
+}
+
+.card-body {
+  padding: 20px; /* Padding interne pour le corps de la carte */
+}
+
+.form-group {
+  margin-bottom: 15px; /* Espacement entre les groupes de formulaires */
+}
+
+.form-control {
+  width: 100%; /* Prend toute la largeur */
+  padding: 10px; /* Espacement interne */
+  border: 1px solid #ccc; /* Bordure légère */
+  border-radius: 5px; /* Coins arrondis */
+  font-size: 16px; /* Taille de police */
+}
+
+.text-danger {
+  color: red; /* Couleur pour les messages d'erreur */
+  font-size: 14px; /* Taille de police pour les messages d'erreur */
+}
+
+.btn-primary {
+  background-color: #00509e; /* Bleu clair */
+  color: white; /* Couleur du texte */
+  padding: 10px 20px; /* Espacement interne */
+  border: none; /* Pas de bordure */
+  border-radius: 5px; /* Coins arrondis */
+  cursor: pointer; /* Curseur pointeur */
+  transition: background-color 0.3s; /* Transition pour l'effet de survol */
+}
+
+.btn-primary:hover {
+  background-color: #003366; /* Couleur au survol */
+}
+
+.row {
+  display: flex;
+  flex-direction: column; /* Empile les éléments verticalement */
+  align-items: center; /* Centre les éléments */
+  margin-top: 20px; /* Espacement en haut */
+}
+
+a {
+  color: #007bff; /* Couleur du lien */
+  text-decoration: none; /* Pas de soulignement */
+  margin-bottom: 10px; /* Espacement en bas du lien */
+}
+
+a:hover {
+  text-decoration: underline; /* Soulignement au survol */
+}
+
+@media (max-width: 768px) {
+  .card {
+    padding: 15px; /* Réduire le padding sur les petits écrans */
+  }
+
+  h1 {
+    font-size: 24px; /* Taille de police réduite sur mobile */
+  }
+}

@@ -5,5 +5,7 @@ export class Bien {
   prix: number = 0;
   disponible: boolean = false;
   type: string = '';
+  type_annonce: string = '';
   imagePath?: string;
+
 }

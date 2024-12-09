@@ -1,0 +1,86 @@
+
+<div *ngIf="bien" class="bien-detail-container">
+  <div class="bien-content">
+    <div class="bien-image">
+      <img [src]="bien.imagePath" alt="bien Image" />
+    </div>
+
+    <div class="bien-description">
+      <h1>{{ bien.type_bien }}</h1>
+      <p>{{ bien.description }}</p>
+
+      <div class="bien-actions">
+        <button  class="btn btn-outline-primary">Réserver</button>
+        <!--        <button (click)="toggleVisiteForm()" class="btn btn-visit">Visiter</button>-->
+      </div>
+    </div>
+  </div>
+
+  <!--  <div *ngIf="showReservationForm" class="reservation-form">-->
+  <!--    <h2>Formulaire de réservation</h2>-->
+  <!--    <form (ngSubmit)="submitReservation()">-->
+  <!--      <div class="form-group">-->
+  <!--        <label for="date_debut">Dat Debut:</label>-->
+  <!--        <input type="date" id="date_debut" [(ngModel)]="reservation.date_debut" name="date_debut" class="form-control" required>-->
+  <!--      </div>-->
+
+  <!--      <div class="form-group">-->
+  <!--        <label for="date_fin">date_fin</label>-->
+  <!--        <input type="date" id="date_fin" [(ngModel)]="reservation.date_fin" name="date_fin" class="form-control" required>-->
+  <!--      </div>-->
+
+  <!--      <div class="form-group">-->
+  <!--        <label for="profession">Profession:</label>-->
+  <!--        <input type="text" id="profession" [(ngModel)]="reservation.profession" name="profession" class="form-control" required>-->
+  <!--      </div>-->
+
+  <!--      <div >-->
+  <!--        <label for="situation_matrimonial">Situation Matrimonial: </label>-->
+  <!--          <select formControlName="situation_matrimonial" id="situation_matrimonial"  name="situation_matrimonial" required>-->
+  <!--            <option value=" ">Celibataire</option>-->
+  <!--            <option value=" ">Marier</option>-->
+  <!--          </select>-->
+  <!--      </div>-->
+
+  <!--      <div class="form-group">-->
+  <!--        <label for="client_nom">Nom Client:</label>-->
+  <!--        <input type="text" id="client_nom" [(ngModel)]="reservation.client_nom" name="client_nom" class="form-control" required>-->
+  <!--      </div>-->
+
+  <!--      <div class="form-group">-->
+  <!--        <label for="bien_immobilier_id">Bien Immobilier:</label>-->
+  <!--        <input type="text" id="bien_immobilier_id" [(ngModel)]="reservation.bien_immobilier_id" name="bien_immobilier_id" class="form-control" required>-->
+  <!--      </div>-->
+
+  <!--      <button type="submit" class="btn btn-reserve">Confirmer la réservation</button>-->
+  <!--    </form>-->
+  <!--  </div>-->
+
+
+  <!--  <div *ngIf="showVisiteurForm" class="visite-form">-->
+  <!--    <h2>Formulaire de Visite</h2>-->
+  <!--    <form (ngSubmit)="submitVisite()">-->
+  <!--      <div class="form-group">-->
+  <!--        <label for="name">Nom complet:</label>-->
+  <!--        <input type="text"  [(ngModel)]="reservation.name" name="name" class="form-control" required>-->
+  <!--      </div>-->
+
+  <!--      <div class="form-group">-->
+  <!--        <label for="email">Email:</label>-->
+  <!--        <input type="email" [(ngModel)]="reservation.email" name="email" class="form-control" required>-->
+  <!--      </div>-->
+
+  <!--      <div class="form-group">-->
+  <!--        <label for="date">Date de réservation:</label>-->
+  <!--        <input type="date"  [(ngModel)]="reservation.date" name="date" class="form-control" required>-->
+  <!--      </div>-->
+
+  <!--      <div class="form-group">-->
+  <!--        <label for="people">Nombre de personnes:</label>-->
+  <!--        <input type="number" id="visiteur" [(ngModel)]="reservation.people" name="people" class="form-control" required>-->
+  <!--      </div>-->
+
+  <!--      <button type="submit" class="btn btn-primary">Confirmer la réservation</button>-->
+  <!--    </form>-->
+  <!--  </div>-->
+</div>
